@@ -1,0 +1,99 @@
+{% extends "shared/layout.html" %}
+
+{% block body %}
+<div class="table">
+    <table class="table" style="border-spacing: 35px;">
+        <tr>
+            <th>#</th>
+            
+            <th>Leave Start</th>
+            <th>Leave End</th>
+            <th>Total Days</th>
+            <th>Leave Status</th>
+            <th>Print Out</th>
+
+
+        </tr>
+        
+       
+        <tr>
+            
+            <td>
+                {{ forloop.counter }}
+            </td>
+            
+
+            <td>
+                {{leave.leave_start }}
+            </td>
+            <td>
+                {{ leave.leave_end }}
+            </td>
+            <td>
+                {{ leave.total_days }}
+            </td>
+            <td>
+                 <!-- TEAM LEADER  -->
+            {% if leave.leave_status_isteamleader == 1 %}
+            <span class="approve-green">
+                Approve
+            </span>
+         {% elif leave.leave_status_isteamleader == 2  %}
+         <span class="disapprove-red">
+            disapproved
+        </span>
+        {% else %}
+        <span class="pending-orange">
+            pending
+        </span>
+         {% endif %}
+
+         <!-- SUPERVISOR  -->
+         {% if leave.leave_status_issupervisor == 1 %}
+            <span class="approve-green">
+                Approve
+            </span>
+         {% elif leave.leave_status_issupervisor == 2  %}
+         <span class="disapprove-red">
+            disapproved
+        </span>
+        {% else %}
+        <span class="pending-orange">
+            pending
+        </span>
+         {% endif %}
+         
+         <!-- MANAGER  -->
+         {% if leave.leave_status_ismanager == 1 %}
+            <span class="approve-green">
+                Approve
+            </span>
+         {% elif leave.leave_status_ismanager == 2  %}
+         <span class="disapprove-red">
+            disapproved
+        </span>
+        {% else %}
+        <span class="pending-orange">
+            pending
+        </span>
+         {% endif %} 
+           
+        </div>
+            </td>
+
+            <td>
+                <span>
+                    <a href="{% url 'staff_request_pdf' leave_id=leave.id %}"> Print</a>
+                </span>
+            
+               </td>
+        </tr>
+        
+           
+     
+
+   </table>
+  
+
+        
+{% endblock body %}

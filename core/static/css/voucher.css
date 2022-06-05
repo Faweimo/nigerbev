@@ -1,0 +1,104 @@
+form {
+    border: 2px solid aqua;
+}
+
+form h2{
+    border-bottom: 2px solid aqua;
+    text-align: center;
+}
+form .account-details{
+    margin-top: -21px;
+}
+
+form #id_payee {
+    width: 609px;
+    margin-left:70px;
+    border-top: none;
+    border: 2px solid aqua;
+}
+
+form #id_account_number {
+    width: 608px;
+    margin-left: -5px;
+    border-top: none;
+    border: 2px solid aqua;
+}
+
+form #account_number{
+    border: 2px solid aqua;
+}
+
+form .qty input{
+    width: 46px;
+    margin-left: -4px;
+    border: 2px solid aqua;
+}
+
+form .details input {
+    width: 631px;
+    border: 2px solid aqua;
+    margin-left:-10px;
+}
+
+form .rate input{
+    width: 100px;
+    margin-left:-50px;
+    border: 2px solid aqua;
+}
+
+form .amount input {
+    margin-left: -9px;
+    /* margin-top: 38px; */
+    border: 2px solid aqua;
+}
+
+form .rate .format, .amount .format {
+    margin-top: 17px;
+}
+
+form .words {
+    margin-top: -3px;
+}
+
+form .words input{
+    width:  788px;;
+    margin-top: -6px;
+    margin-bottom: 8px;
+    border: 2px solid aqua;
+    margin-left: -6px;
+}
+
+form .words label{
+    border: 2px solid aqua;
+}
+
+form .verification{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+
+form .request_by {
+    display: grid;
+    margin-top: -9px;
+}
+
+form .request_by input {
+    width: 350px;
+    padding: 21px;
+    border: 2px solid aqua;
+}
+
+form .request_by label {
+    border: 2px solid aqua;
+    width: 350px;
+}
+
+form button {
+    margin-top: 12px;
+    margin-bottom: 20px;
+    margin-left: 423px;
+}
+
+form span {
+    border: 2px solid aqua;
+}

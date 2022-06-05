@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process || Home</title>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/voucher.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'css/alerts.css' %}">
+    {% block static %}
+      
+    {% endblock static %}
+    
+       
+ 
+
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <h2>
+                LOGO .
+            </h2>
+        </div>
+        <header>
+            <ul class="nav"> 
+                
+                
+                <li><a href=" {% url 'search' %}">Home</a></li>
+                <li><a href="{% url 'requestclient' %}">Voucher</a></li>
+                
+
+            {% if user.is_authenticated %}
+                
+                <li>{% if request.user.user_type == 4 %}
+                    <a href="{% url 'dashboard' %}">Welcome, {{ user.email }}  </a>
+                      {% elif request.user.user_type == 3 %}
+                      <a href="{% url 'manager_page' %}">Welcome, {{ user.email }}  </a>
+                      {% elif request.user.user_type == 2 %}
+                      <a href="{% url 'acknowlege' %}">Welcome, {{ user.email }}  </a>
+                  
+                     
+                      
+                  {% endif %}
+              </li>
+
+                <li><a href="{% url 'logout' %}"> Log out</a></li>
+            {% else %}
+                <li>
+                    <a href="{% url 'register' %}"> Sign up</a>|| <a href="{% url 'login' %}"> log in</a>
+                </li>        
+            {% endif %}
+                
+                
+                
+            </ul>
+        </header>
+    </nav>
+    <!-- ALERT MESSAGES -->
+    {% include "partials/_alerts.html" %}
+
+    {% block body %}
+      
+    {% endblock body %}
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="{% block script %} {% endblock script %}"></script>
+
+</body>
+</html>    

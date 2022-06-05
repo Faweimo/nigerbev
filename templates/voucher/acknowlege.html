@@ -1,0 +1,53 @@
+{% extends "shared/layout.html" %}
+
+
+{% block body %} 
+<div class="table">
+            <table class="table" style="border-spacing: 45px;">
+                <tr>
+                    <th>#</th>
+                    <th>Client Email</th>
+                    <th>Date Created</th>
+                    <th>Tracking ID</th>                    
+                    <th>Status</th>
+                    <th>Print</th>
+    
+    
+                </tr>
+                
+                {% for voucher in vouchers %}
+                <tr>
+                    
+                    <td>
+                        {{ forloop.counter }}
+                    </td>
+                    <td>
+                        {{ voucher.client.user.email }}
+                    </td>
+
+                    <td>
+                        {{voucher.voucher_created_at }}
+                    </td>
+                    <td>
+                        {{ voucher.tracking_id }}
+                    </td>
+                    
+                    <td>
+                        {% if voucher.acknowledge_by == 0 %}
+                        <a href="{% url 'approve_acknowlege' acknowlege_id=voucher.id %}" class="btn btn-success"  >Approve </a>
+                        <a href="{% url 'disapprove_acknowlege' acknowlege_id=voucher.id %}" class="btn btn-success"  >Disapproved </a>
+                        {% elif  voucher.acknowledge_by == 1 %}
+                        <button class="btn btn-warning" disabled="disabled" data-toggle="modal" data-target="#reply_modal" >Approved </button>
+                        {% else %}
+                        <button class="btn btn-danger" disabled="disabled"  data-toggle="modal" data-target="#reply_modal" >Disapprove </button>
+                        {% endif %}</td>
+                    </td>
+                    <td>
+                        <a href="{% url 'print_approved' voucher.id %}">Print</a> 
+                    </td>
+                </tr>
+                {% endfor %}
+    
+           </table>
+
+           {% endblock body %}            

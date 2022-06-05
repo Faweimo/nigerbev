@@ -1,0 +1,51 @@
+{% extends "shared/layout.html" %}
+
+
+{% block body %} 
+ <div class="table">
+            <table class="table" style="border-spacing: 45px;">
+                <tr>
+                    <th>#</th>
+                    <th>Staff Email</th>
+                    <th>Leave Start</th>
+                    <th>Leave End</th>
+                    <th>Total Days</th>
+                    <th>Leave Status</th>
+    
+    
+                </tr>
+                
+                {% for leave in leaves %}
+                <tr>
+                    
+                    <td>
+                        {{ forloop.counter }}
+                    </td>
+                    <td>
+                        {{ leave.user.email }}
+                    </td>
+
+                    <td>
+                        {{leave.leave_start }}
+                    </td>
+                    <td>
+                        {{ leave.leave_end }}
+                    </td>
+                    <td>
+                        {{ leave.total_days }}
+                    </td>
+                    <td>
+                        {% if leave.leave_status_issupervisor == 0 %}
+                        <a href="{% url 'approve_supose' supose_id=leave.id %}" class="btn btn-success"  >Approve </a>
+                        <a href="{% url 'disapprove_supose' supose_id=leave.id %}" class="btn btn-success"  >Disapproved </a>
+                        {% elif  leave.leave_status_issupervisor == 1 %}
+                        <button class="btn btn-warning" disabled="disabled" data-toggle="modal" data-target="#reply_modal" >Approved </button>
+                        {% else %}
+                        <button class="btn btn-danger" disabled="disabled"  data-toggle="modal" data-target="#reply_modal" >Disapprove </button>
+                        {% endif %}</td>
+                    </td>
+                </tr>
+                {% endfor %}
+    
+           </table>
+{% endblock body %}            

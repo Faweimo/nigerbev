@@ -1,0 +1,62 @@
+{% extends "shared/layout.html" %}
+
+{% block body %}
+  <h2>
+      Total Pending Voucher
+  </h2>
+
+  {% include "partials/_dashboard.html" %}
+
+  <div class="table">
+    <table class="table" style="border-spacing: 35px;">
+        <tbody>
+            <tr>
+                <th>
+                    S/N
+                </th>
+                
+                <th>
+                    Tracking_id
+                </th>
+                <th>
+                  Requested By
+              </th>
+              <th>
+                  Created At
+              </th>
+              <th>
+                  Status
+              </th>
+            </tr>
+        </tbody>
+        
+       
+        <tbody>
+            {% if vouchers %}
+
+            {% for voucher in vouchers %}
+            
+              <tr>
+          
+                 
+                <td>{{ forloop.counter }}</td>
+                <td> {{ voucher.tracking_id}}</td>
+
+                <td> {{voucher.requested_by }}</td>
+                <td> {{voucher.voucher_created_at }}</td>
+                <td> <span> Pending</span></td>
+                   
+
+              </tr>
+              {% endfor %}
+                   
+              {% endif %}
+          </tbody>
+             
+        
+           
+     
+
+   </table>
+    
+{% endblock body %}

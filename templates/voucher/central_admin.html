@@ -1,0 +1,37 @@
+{% extends "shared/layout.html" %}
+
+
+{% block body %} 
+<div class="header">
+    <div>
+        <ul>
+            <li>
+                <a href="{% url 'register' %}">Add member</a>
+            </li>
+            <li>
+
+            </li>
+        </ul>
+    </div>
+</div>
+
+<h2>
+    All USERS
+</h2>
+
+        
+         <!-- For bulk creations of member /  -->
+    <form  method="POST" action="{% url 'bulk_upload_member' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        
+        <div >
+            {{ form.label  }}
+          {{ form | safe }}
+        </div>
+        <button type="submit" class="btn btn-primary">Upload</button>
+  </form>
+
+ 
+
+{% endblock body %}            

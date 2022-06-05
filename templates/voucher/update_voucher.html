@@ -1,0 +1,148 @@
+{% extends "shared/layout.html" %}
+{% load static %}
+
+{% block body %}
+
+<form action="{% url 'update_voucher_save' %}" method="POST" id="form">
+    {% csrf_token %}
+   
+    <div class="headings">
+        <h2>
+            Update Payment Requisiton Voucher         
+        </h2>
+        
+    </div>
+   
+    <div class="account-details">
+        <div>
+            <label for="id_payee">Payee</label>
+            <input type="text" name="payee" value="{{ voucher.payee }}">
+            <span>Tracking ID:{{ voucher.tracking_id }} </span>
+        </div>
+
+        <div>
+            <label for="id_account_number"  id="account_number">Account number</label>
+            <input type="text" name="account_number" value="{{ voucher.account_number }}">
+            <span> </span>
+            
+        </div>
+    </div>
+
+
+    <table>
+        <tbody>
+            <tr>
+               
+                    
+                <th>
+                    Qty
+                </th>
+                <th>
+                    Details
+                </th>
+                <th>
+                    Rate
+                </th>
+                <th>
+                    Amount
+                </th>
+            
+            
+            </tr>
+        </tbody>
+
+        <tr>
+            
+                <td class="qty">
+                    <input type="text" name="qty" id="qty1" value="{{ voucher.qty }}">
+                    <input type="text" name="qty_2" id="qty2" value="{{ voucher.qty_2 }}">
+                    <input type="text" name="qty_3" id="qty3" value="{{ voucher.qty_3 }}">
+                    <input type="text" name="qty_4" id="qty4"  value="{{ voucher.qty_4 }}">
+                    <input type="text" name="qty_5" id="qty5"  value="{{ voucher.qty_5 }}">
+                    
+                    
+                </td>
+
+                <td class="details">
+                    <input type="text" name="details" value="{{ voucher.details }}">
+                    <input type="text" name="details_2" value="{{ voucher.details_2 }}">
+                    <input type="text" name="details_3" value="{{ voucher.details_3 }}">
+                    <input type="text" name="details_4" value="{{ voucher.details_4 }}">
+                    <input type="text" name="details_5" value="{{ voucher.details_5 }}">
+                   
+                </td>
+
+               
+                    <td class="rate">
+                        <div class="format">
+                            <input type="text" name="rate" id="rate1" value="{{ voucher.rate }}">
+                            <input type="text" name="rate_2" id="rate2" value="{{ voucher.rate_2 }}">
+                            <input type="text" name="rate_3" id="rate3" value="{{ voucher.rate_3 }}">
+                            <input type="text" name="rate_4" id="rate4" value="{{ voucher.rate_4 }}">
+                            <input type="text" name="rate_5" id="rate5" value="{{ voucher.rate_5 }}">
+                       
+                        <label for="id_total">
+                            Total
+                        </label>
+                        </div>
+                    </td>
+    
+                    <td class="amount">
+                        <div class="format">
+                            <input type="text" name="amount" id="amount1" value="{{ voucher.amount }}">
+                            <input type="text" name="amount_2" id="amount2" value="{{ voucher.amount_2 }}">
+                            <input type="text" name="amount_3" id="amount3" value="{{ voucher.amount_3 }}">
+                            <input type="text" name="amount_4" id="amount4"value="{{ voucher.amount_4 }}">
+                            <input type="text" name="amount_5" id="amount5" value="{{ voucher.amount_5 }}">
+                            <input type="number" name="total" id="total" value="{{ voucher.total }}" >                         
+                       
+                        </div>
+                    </td>
+               
+            
+        </tr>
+    </table>
+
+    <div class="words">
+        <label for="id_amount_in_words">Amount in words</label>
+        <input type="text" name="amount_in_words" id="amount_in_words" value="{{ voucher.amount_in_words }}">
+    </div>
+    
+    <div class="verification">
+        <div class="request_by">
+            <input type="text" name="requested_by" value="{{ voucher.requested_by }}">
+            <label for="id_requested_by">Requested By</label>
+        </div>
+        
+        <div class="request_by">
+            <input type="text" name="acknowlege_email" value="{{ voucher.acknowlege_email }}">            
+            <label for="id_acknowlege_by">Acknowlege By</label>
+        </div>
+    
+        <div class="request_by">            
+           <input type="text" name="approve_email" value="{{ voucher.approve_email }}">
+            <label for="id_approved_by">Approve By</label>
+        </div>
+        
+    </div>
+    <input type="hidden" name="client" value="{{ voucher.client.user.email }}">
+    <input type="hidden" name="voucher_id" value="{{ voucher.id }}">
+   
+    
+    <button type="submit">update</button>
+</form>
+
+
+<div>
+    <img src={{ payverify.qr_code.url }} alt="qr_code">
+</div>
+
+<!-- FORM PREVIEW BEFORE SUBMISSION  -->
+
+
+{% endblock body %}
+
+{% block script %}
+{% static 'js/request.js' %}
+
+{% endblock script %}  

@@ -1,0 +1,14 @@
+
+{% autoescape off %}
+{% load static %}
+
+   <h2>
+      
+    Hi,{{ voucher.client.user.email }}
+   </h2>
+
+    <p style="color: red;">
+        Hi {{ voucher.requested_by }}, You now finally been Disapprove with <b>TRACKING ID: {{ voucher.tracking_id }}</b>, keep in contact with the Manager
+    
+    </p>
+{% endautoescape %}

@@ -1,0 +1,53 @@
+{% extends "shared/layout.html" %}
+
+
+{% block body %} 
+<div class="table">
+            <table class="table" style="border-spacing: 45px;">
+                <tr>
+                    <th>#</th>
+                    <th>Client Email</th>
+                    <th>Date Created</th>
+                    <th>Tracking ID</th>                    
+                    <th>Status</th>
+                    <th>Print</th>
+    
+    
+                </tr>
+                
+                {% for voucher in vouchers %}
+                <tr>
+                    
+                    <td>
+                        {{ forloop.counter }}
+                    </td>
+                    <td>
+                        {{ voucher.client.user.email }}
+                    </td>
+
+                    <td>
+                        {{voucher.voucher_created_at }}
+                    </td>
+                    <td>
+                        {{ voucher.tracking_id }}
+                    </td>
+                    
+                    <td>
+                        {% if voucher.approved_by == 0 %}
+                        <a href="{% url 'approved_manager' manager_id=voucher.id %}">Approve </a>
+                        <a href="{% url 'disapproved_manager' manager_id=voucher.id %}">Disapproved </a>
+                        {% elif  voucher.approved_by == 1 %}
+                        <button  disabled="disabled" >Approved </button>
+                        {% else %}
+                        <button  disabled="disabled" >Disapprove </button>
+                        {% endif %}</td>
+                    </td>
+                    <td>
+                        <a href="{% url 'print_approved' voucher.id %}">Print</a> 
+                    </td>
+                </tr>
+                {% endfor %}
+    
+           </table>
+
+           {% endblock body %}            

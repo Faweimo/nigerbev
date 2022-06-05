@@ -1,0 +1,158 @@
+{% extends "shared/layout.html" %}
+{% load static %}
+
+{% block body %}
+
+<form action="{% url 'requestclient_save' %}" method="POST" id="form">
+    {% csrf_token %}
+   
+    <div class="headings">
+        <h2>
+            Payment Requisiton Voucher         
+        </h2>
+        
+    </div>
+   
+    <div class="account-details">
+        <div>
+            <label for="id_payee">Payee</label>
+            <input type="text" name="payee" required>
+            <span>Tracking ID: </span>
+        </div>
+
+        <div>
+            <label for="id_account_number"  id="account_number">Account number</label>
+            <input type="text" name="account_number" required>
+            <span> </span>
+            
+        </div>
+    </div>
+
+
+    <table>
+        <tbody>
+            <tr>
+               
+                    
+                <th>
+                    Qty
+                </th>
+                <th>
+                    Details
+                </th>
+                <th>
+                    Rate
+                </th>
+                <th>
+                    Amount
+                </th>
+            
+            
+            </tr>
+        </tbody>
+
+        <tr>
+            
+                <td class="qty">
+                    <input type="text" name="qty" id="qty1" required>
+                    <input type="text" name="qty_2" id="qty2">
+                    <input type="text" name="qty_3" id="qty3">
+                    <input type="text" name="qty_4" id="qty4">
+                    <input type="text" name="qty_5" id="qty5">
+                    
+                    
+                </td>
+
+                <td class="details">
+                    <input type="text" name="details" required>
+                    <input type="text" name="details_2">
+                    <input type="text" name="details_3">
+                    <input type="text" name="details_4">
+                    <input type="text" name="details_5">
+                   
+                </td>
+
+               
+                    <td class="rate">
+                        <div class="format">
+                            <input type="text" name="rate" id="rate1" required>
+                            <input type="text" name="rate_2" id="rate2">
+                            <input type="text" name="rate_3" id="rate3">
+                            <input type="text" name="rate_4" id="rate4">
+                            <input type="text" name="rate_5" id="rate5">
+                       
+                        <label for="id_total">
+                            Total
+                        </label>
+                        </div>
+                    </td>
+    
+                    <td class="amount">
+                        <div class="format">
+                            <input type="text" name="amount" id="amount1" required>
+                            <input type="text" name="amount_2" id="amount2">
+                            <input type="text" name="amount_3" id="amount3">
+                            <input type="text" name="amount_4" id="amount4">
+                            <input type="text" name="amount_5" id="amount5">
+                            <input type="number" name="total" id="total">                         
+                       
+                        </div>
+                    </td>
+               
+            
+        </tr>
+    </table>
+
+    <div class="words">
+        <label for="id_amount_in_words">Amount in words</label>
+        <input type="text" name="amount_in_words" id="amount_in_words" required>
+    </div>
+    
+    <div class="verification">
+        <div class="request_by">
+            <input type="text" name="requested_by" required>
+            <label for="id_requested_by">Requested By</label>
+        </div>
+        
+        <div class="request_by">
+            <select name="acknowlege_email" id="acknowledge_by">
+                <option value="">select email</option>
+                {% for s in user_obj %}
+                  <option value="{{ s.email }}">{{ s.email }}</option>
+                {% endfor %}
+            </select>
+            <label for="id_acknowlege_by">Acknowlege By</label>
+        </div>
+    
+        <div class="request_by">
+            
+            <select name="approve_email" id="approved_by" required>
+                <option>Select email</option>
+                {% for mail in user_obj %}
+                  <option value="{{ mail.email }}">
+                    {{ mail.email }}
+                  </option>
+                {% endfor %}
+            </select>
+            <label for="id_approved_by">Approve By</label>
+        </div>
+        
+    </div>
+
+    
+    <!-- <div>
+            
+    </div> -->
+    <button type="submit">submit</button>
+</form>
+
+
+<!-- FORM PREVIEW BEFORE SUBMISSION  -->
+
+
+{% endblock body %}
+
+{% block script %}
+{% static 'js/request.js' %}
+
+{% endblock script %}  

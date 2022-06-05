@@ -1,0 +1,14 @@
+
+{% autoescape off %}
+{% load static %}
+
+   <h2>
+      
+    Hi,{{ approve_email }}
+   </h2>
+
+    <p style="color: red;">
+        {{ voucher.payee }} update voucher and you cannot acknowlege this voucher again with <b>TRACKING ID: {{ voucher.tracking_id }}</b>
+    
+    </p>
+{% endautoescape %}

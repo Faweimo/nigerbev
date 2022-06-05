@@ -1,0 +1,23 @@
+{% extends "shared/layout.html" %}
+
+{% block body %}
+    <h2>
+        Search Using Tracking ID
+    </h2>
+
+    <form action="{% url 'search' %}" method="GET">
+        <label for="id_search"> SEARCH</label>
+        <input type="text" name="keyword" id="search" placeholder="search here...">
+
+        <button type="submit" class="btn btn-default" method="GET" value="search">
+            <!-- <i class="fas fa-search"></i> -->
+            search
+          </button>
+    </form>
+
+    <div>
+        <p>
+            {{ data }}
+        </p>
+    </div>    
+{% endblock body %}

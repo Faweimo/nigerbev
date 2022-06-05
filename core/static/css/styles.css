@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&family=Ubuntu:wght@300&display=swap');
+
+*{
+    margin: center;
+    padding: center;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+
+    /* font-family: 'Ubuntu', sans-serif; */
+    
+}
+
+body {
+    width: 70%;
+    margin-left: 15%;
+    border: 1px solid;
+    padding: 15px;
+}
+nav {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+
+ul {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    list-style: none;
+}
+
+/* Table  */
+#head, .data-row{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    margin-bottom:2px ;
+    border-bottom: 1px solid aquamarine;
+}
+
+/* Preview  modal */
+/* .modal{
+    display: none;
+    width: 75%;
+    background: red;
+    position: absolute;
+    top: 15%;
+    left: 12%;  
+    border-radius: 4px;
+    border: none;
+    word-wrap: break-word;
+    padding: 18px;
+}
+.modal .wrapper table{
+    position: absolute;
+    top: 63px;
+    left: 310px;
+    padding: 18px;
+} */    

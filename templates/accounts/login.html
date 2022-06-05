@@ -1,0 +1,17 @@
+{% extends "shared/layout.html" %}
+{% load static %}
+{% block body %}
+<form action="" method="POST">
+    {% csrf_token %}
+    <label class="form-label">{{ form.email.label}}</label>
+    {{ form.email}}
+
+    <label class="form-label">{{ form.password.label}}</label>
+    {{ form.password}}
+    <div class="d-grid gap-2">
+        <input type="hidden" name="next" value="{{ next }}">
+        <button class="btn btn-primary py-2 mb-4 mt-5 fw-bold" type="submit" value="Log-in">Sign in
+        </button>    
+</form>
+
+{% endblock body %}

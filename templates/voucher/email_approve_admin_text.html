@@ -1,0 +1,16 @@
+
+{% autoescape off %}
+{% load static %}
+
+   <h2>
+      
+    Hi,{{ voucher.client.user.email }}
+   </h2>
+
+    <p style="color: green;">
+        Hi {{ voucher.payee }}, You now finally been Approve with <b>TRACKING ID: {{ voucher.tracking_id }}</b>, you can now print the voucher now
+    Please click this link to print this Voucher 
+
+    http://{{domain}}{% url 'dashboard' %}
+    </p>
+{% endautoescape %}

@@ -1,0 +1,33 @@
+{% extends "shared/layout.html" %}
+
+{% block body %}
+  
+<div>
+    <h2>
+        Leave Request 
+    </h2>
+</div>
+
+<div class="form">
+    <form action="{% url 'index' %}" method="POST">
+        {% csrf_token %} 
+        {% if user.is_authenticated %}
+        <input type="hidden" name="user" value="{{ user.email }}" >
+
+        {% else %}
+        <input type="hidden" name="user" value="" >
+        {% endif %}           
+        
+        <label for="leave_start"> Leave Start</label>
+        <input type="date" name="leave_start" >
+
+        <label for="leave_end"> Leave End</label>
+        <input type="date" name="leave_end" >
+        
+        <button type="submit"> submit</button>
+    </form>
+</div>
+
+
+
+{% endblock body %}

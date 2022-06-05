@@ -1,0 +1,37 @@
+{% extends "shared/layout.html" %}
+
+{% block body %}
+  <h2>
+      Acknowlege
+  </h2>
+  <form action="" method="POST">
+
+      {% csrf_token %}
+
+      
+        <input type="hidden" name="client" id="id_client" value="{{ user.email }}">
+        
+      
+      <label for="">
+          Description:
+      </label>
+      {{ form.description }}
+
+      <label for="">
+
+        Acknowlege By:
+      </label>
+    
+      {{ form.acknowlege_by }}
+
+      <label for="">
+
+        Approve By:
+      </label>
+    
+      {{ form.approved_by }}
+
+      <button type="submit" value="submit">save</button>
+
+  </form>
+{% endblock body %}

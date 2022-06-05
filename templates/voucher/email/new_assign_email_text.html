@@ -1,0 +1,16 @@
+
+{% autoescape off %}
+{% load static %}
+
+   <h2>
+      
+    Hi,{{ acknowlege_email }}
+   </h2>
+
+    <p style="color: orange;">
+        {{ voucher.payee }} update voucher and you now to acknowledge this voucher with <b>TRACKING ID: {{ voucher.tracking_id }}</b>, you can now acknowlege this voucher now
+    Please click this link to your dashboard
+
+    http://{{domain}}{% url 'dashboard' %}
+    </p>
+{% endautoescape %}

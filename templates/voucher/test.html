@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="{% url 'testing_save' %}" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="user" value="{{ user.email }}">
+        <!-- <label for="">Description</label>
+        <input type="text" name="mtext" id="">
+
+        <label for="">Appove_by</label>
+        
+        <select name="approved_by">
+            {% for user in users  %}
+              <option>{{ user.email }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="">Acknowledge_by</label>
+        
+        <select name="acknownlege_by">
+            {% for user in users  %}
+              <option>{{ user.email }}</option>
+            {% endfor %}
+        </select> -->
+
+        {{ form }}
+        <button type="submit" class="">submit</button>
+
+
+    </form>
+</body>
+</html>

@@ -1,0 +1,137 @@
+{% extends "shared/layout.html" %}
+{% load static %}
+{% block static %}
+<link rel="stylesheet" href="{% static 'css/pdf.css' %}">
+{% endblock static %}
+    {% block body %}
+    <div class="containter-large">
+
+   
+    <div class="headings" >
+        <h2>
+            Payment Requisiton Voucher         
+        </h2>
+        
+    </div>
+   
+    <div class="account-details">
+        <div>
+            <label for="id_payee">Payee:</label>
+            {{ voucher.payee }}
+            <span>Tracking ID: {{ voucher.tracking_id }} </span>
+        </div>
+
+        <div>
+            <label for="id_account_number"  id="account_number">Account number:</label>
+            {{voucher.account_number }}
+            <span> </span>
+            
+        </div>
+    </div>
+
+
+    <table>
+        <tbody>
+            <tr>
+               
+                    
+                <th>
+                    Qty
+                </th>
+                <th>
+                    Details
+                </th>
+                <th>
+                    Ratedashboard
+                </th>
+                <th>
+                    Amount
+                </th>
+            
+            
+            </tr>
+        </tbody>
+
+        <tr>
+            
+                <td class="qty">
+                    {{voucher.qty }}
+                    {{voucher.qty_2 }}
+                    {{voucher.qty_3 }}
+                    {{voucher.qty_4 }}
+                    {{voucher.qty_5 }}
+                    
+                    
+                </td>
+
+                <td class="details">
+                    {{ voucher.details }}
+                    {{voucher.details_2 }}
+                    {{voucher.details_3}}
+                    {{voucher.details_4 }}
+                    {{voucher.details_5 }}
+                   
+                </td>
+
+               
+                    <td class="rate">
+                        <div class="format">
+                            {{ voucher.rate }}
+                            {{ voucher.rate_2 }}
+                            {{ voucher.rate_3 }}
+                            {{ voucher.rate_4 }}
+                            {{ voucher.rate_5 }}
+                       
+                        <label for="id_total">
+                            Total
+                        </label>
+                        </div>
+                    </td>
+    
+                    <td class="amount">
+                        <div class="format">
+                            {{ voucher.amount }}
+                            {{ voucher.amount_2 }}
+                            {{ voucher.amount_3 }}
+                            {{ voucher.amount_4 }}
+                            {{ voucher.amount_5 }}
+                            {{ voucher.total }}
+                       
+                        </div>
+                    </td>
+               
+            
+        </tr>
+    </table>
+
+    <div class="words">
+        <label for="id_amount_in_words">Amount in words:</label>
+        {{ voucher.amount_in_words }}
+    </div>
+    
+    <div class="verification">
+        <div class="request_by">
+            {{ voucher.requested_by }}
+            <label for="id_requested_by">Requested By</label>
+        </div>
+
+        <div class="request_by">
+            {{ voucher.acknowlege_email }}
+            <label for="id_requested_by">Acknowledge By</label>
+        </div>
+
+        <div class="request_by">
+            {{ voucher.approve_email }}
+            <label for="id_requested_by">Approved By</label>
+        </div>
+        
+            
+                <img src={{ verify.qr_code.url }} alt="qr_code">
+            
+        
+    </div>
+</div>
+
+
+    {% endblock body %}
+  
